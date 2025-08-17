@@ -1,5 +1,6 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import { loader, galleryList } from '../main';
 
 let lightbox = null;
 
@@ -54,8 +55,14 @@ export function gallerysTemplate(images) {
   return images.map(createGallery).join('');
 }
 
-export function clearGallery() {}
+export function clearGallery() {
+  galleryList.innerHTML = '';
+}
 
-export function showLoader() {}
+export function showLoader() {
+  loader.classList.remove('hidden')
+}
 
-export function hideLoader() {}
+export function hideLoader() {
+  loader.classList.add('hidden');
+}
