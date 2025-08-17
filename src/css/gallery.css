@@ -22,7 +22,12 @@
   align-items: center;
   background-color: #fff;
 }
-
+.gallery-img-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 /* HTML: <div class="loader"></div> */
 .loader {
     display: block;
