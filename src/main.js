@@ -1,9 +1,8 @@
 import { getImagesByQuery } from './js/pixabay-api';
 import {
   clearGallery,
-  createLightbox,
-  gallerysTemplate,
   hideLoader,
+  renderGallery,
   showLoader,
 } from './js/render-functions';
 import iziToast from 'izitoast';
@@ -48,9 +47,7 @@ form.addEventListener('submit', e => {
         });
         return;
       }
-      const markup = gallerysTemplate(images);
-      galleryList.innerHTML = markup;
-      createLightbox();
+      renderGallery(images);
     })
     .catch(error => {
       iziToast.error({

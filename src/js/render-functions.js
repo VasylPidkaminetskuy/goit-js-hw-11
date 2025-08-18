@@ -17,42 +17,48 @@ export function createLightbox() {
   }
 }
 
-function createGallery({
-  webformatURL,
-  largeImageURL,
-  tags,
-  likes,
-  views,
-  comments,
-  downloads,
-}) {
-  return `<li class="gallery-item">
-          <a class="gallery-item-link" href="${largeImageURL}"> <img class="gallery-item-img" src="${webformatURL}" alt="${tags}" /></a>
-          <div class="gallery-description-container">
-            <div class="gallery-img-info">
-              <h5>Likes</h5>
-              <p>${likes}</p>
-            </div>
 
-            <div class="gallery-img-info">
-              <h5>Views</h5>
-              <p>${views}</p>
+export function renderGallery(images) {
+  const markup = images
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `<li class="gallery-item">
+            <a class="gallery-item-link" href="${largeImageURL}">
+              <img class="gallery-item-img" src="${webformatURL}" alt="${tags}" />
+            </a>
+            <div class="gallery-description-container">
+              <div class="gallery-img-info">
+                <h5>Likes</h5>
+                <p>${likes}</p>
+              </div>
+              <div class="gallery-img-info">
+                <h5>Views</h5>
+                <p>${views}</p>
+              </div>
+              <div class="gallery-img-info">
+                <h5>Comments</h5>
+                <p>${comments}</p>
+              </div>
+              <div class="gallery-img-info">
+                <h5>Downloads</h5>
+                <p>${downloads}</p>
+              </div>
             </div>
+          </li>`;
+      }
+    )
+    .join('');
 
-            <div class="gallery-img-info">
-              <h5>Comments</h5>
-              <p>${comments}</p>
-            </div>
-
-            <div class="gallery-img-info">
-              <h5>Downloads</h5>
-              <p>${downloads}</p>
-            </div>
-          </div>
-        </li>`;
-}
-export function gallerysTemplate(images) {
-  return images.map(createGallery).join('');
+  galleryList.innerHTML = markup;
+  createLightbox(); 
 }
 
 export function clearGallery() {
